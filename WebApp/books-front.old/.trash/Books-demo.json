@@ -1,0 +1,708 @@
+{
+  "kind": "books#volumes",
+  "totalItems": 596,
+  "items": [
+    {
+      "kind": "books#volume",
+      "id": "0mpVNwAACAAJ",
+      "etag": "wrjlf01B9eY",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/0mpVNwAACAAJ",
+      "volumeInfo": {
+        "title": "UML 2 analyse et conception",
+        "subtitle": "Mise en oeuvre guidée avec études de cas",
+        "authors": [
+          "Joseph Gabay",
+          "David Gabay"
+        ],
+        "publishedDate": "2008",
+        "description": "Cet ouvrage s'adresse à tous les professionnels, concepteurs et développeurs, qui souhaitent mieux maîtriser UML 2 et acquérir une démarche pratique de mise en œuvre ainsi qu'aux étudiants en informatique. Il propose une approche pédagogique de l'aspect normatif d'UML 2 et une démarche d'élaboration des diagrammes couvrant l'analyse et la conception des systèmes d'information. Le lecteur suit un apprentissage progressif fondé sur de nombreux exemples, exercices corrigés et de véritables études de cas se rapprochant de projets réels d'entreprise. Cette édition sert trois objectifs : présenter les treize diagrammes d'UML 2 en conciliant le respect strict de la norme avec une application centrée sur les SI des entreprises ; décrire l'analyse et la conception des SI à l'aide des diagrammes d'UML 2 en s'appuyant sur des exemples et des exercices adaptés au contexte professionnel ; proposer une démarche de mise en œuvre d'UML 2 structurée en phases et activités, décrite à l'aide de fiches guides et illustrée par deux études de cas détaillées.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_10",
+            "identifier": "2100518305"
+          },
+          {
+            "type": "ISBN_13",
+            "identifier": "9782100518302"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": false
+        },
+        "pageCount": 226,
+        "printType": "BOOK",
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "preview-1.0.0",
+        "language": "fr",
+        "previewLink": "http://books.google.com/books?id=0mpVNwAACAAJ&dq=uml&hl=&cd=1&source=gbs_api",
+        "infoLink": "http://books.google.com/books?id=0mpVNwAACAAJ&dq=uml&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/UML_2_analyse_et_conception.html?hl=&id=0mpVNwAACAAJ"
+      },
+      "saleInfo": {
+        "country": "MA",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "MA",
+        "viewability": "NO_PAGES",
+        "embeddable": false,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=0mpVNwAACAAJ&hl=&source=gbs_api",
+        "accessViewStatus": "NONE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Cette édition sert trois objectifs : présenter les treize diagrammes d&#39;UML 2 en conciliant le respect strict de la norme avec une application centrée sur les SI des entreprises ; décrire l&#39;analyse et la conception des SI à l&#39;aide des ..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "uNpqzQEACAAJ",
+      "etag": "A3n8tQG1Qsg",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/uNpqzQEACAAJ",
+      "volumeInfo": {
+        "title": "UML 2.5",
+        "subtitle": "Initiation, exemples et exercices corrigés",
+        "authors": [
+          "Laurent Debrauwer",
+          "Fien Van der Heyde"
+        ],
+        "publishedDate": "2020-03-11",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_10",
+            "identifier": "2409024084"
+          },
+          {
+            "type": "ISBN_13",
+            "identifier": "9782409024085"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": false
+        },
+        "pageCount": 341,
+        "printType": "BOOK",
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "preview-1.0.0",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "language": "fr",
+        "previewLink": "http://books.google.com/books?id=uNpqzQEACAAJ&dq=uml&hl=&cd=2&source=gbs_api",
+        "infoLink": "http://books.google.com/books?id=uNpqzQEACAAJ&dq=uml&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/UML_2_5.html?hl=&id=uNpqzQEACAAJ"
+      },
+      "saleInfo": {
+        "country": "MA",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "MA",
+        "viewability": "NO_PAGES",
+        "embeddable": false,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=uNpqzQEACAAJ&hl=&source=gbs_api",
+        "accessViewStatus": "NONE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "&quot;Ce livre sur UML 2.5 s&#39;adresse tout autant aux étudiants qu&#39;aux développeurs pratiquant la modélisation de systèmes, de logiciels et de processus."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "MG6RFKZxwFIC",
+      "etag": "SI34Ewj2QN8",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/MG6RFKZxwFIC",
+      "volumeInfo": {
+        "title": "UML 2",
+        "subtitle": "entraînez-vous à la modélisation",
+        "authors": [
+          "Laurent Debrauwer",
+          "Naouel Karam"
+        ],
+        "publisher": "Editions ENI",
+        "publishedDate": "2009",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_10",
+            "identifier": "2746051990"
+          },
+          {
+            "type": "ISBN_13",
+            "identifier": "9782746051997"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "pageCount": 266,
+        "printType": "BOOK",
+        "categories": [
+          "Relational databases"
+        ],
+        "averageRating": 3,
+        "ratingsCount": 1,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "1.2.3.0.preview.1",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=MG6RFKZxwFIC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=MG6RFKZxwFIC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "fr",
+        "previewLink": "http://books.google.com/books?id=MG6RFKZxwFIC&printsec=frontcover&dq=uml&hl=&cd=3&source=gbs_api",
+        "infoLink": "http://books.google.com/books?id=MG6RFKZxwFIC&dq=uml&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/UML_2.html?hl=&id=MG6RFKZxwFIC"
+      },
+      "saleInfo": {
+        "country": "MA",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "MA",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.com/books/download/UML_2-sample-pdf.acsm?id=MG6RFKZxwFIC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=MG6RFKZxwFIC&hl=&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "nHZslSr1gJAC",
+      "etag": "d8wHKXmYNEM",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/nHZslSr1gJAC",
+      "volumeInfo": {
+        "title": "UML Distilled",
+        "subtitle": "A Brief Guide to the Standard Object Modeling Language",
+        "authors": [
+          "Martin Fowler"
+        ],
+        "publisher": "Addison-Wesley Professional",
+        "publishedDate": "2004",
+        "description": "A guide to using UML describes major UML diagrams, their creation, and how to decipher them.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_10",
+            "identifier": "0321193687"
+          },
+          {
+            "type": "ISBN_13",
+            "identifier": "9780321193681"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "pageCount": 218,
+        "printType": "BOOK",
+        "categories": [
+          "Computers"
+        ],
+        "averageRating": 4,
+        "ratingsCount": 26,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "5.6.7.0.preview.1",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=nHZslSr1gJAC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=nHZslSr1gJAC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.com/books?id=nHZslSr1gJAC&printsec=frontcover&dq=uml&hl=&cd=4&source=gbs_api",
+        "infoLink": "http://books.google.com/books?id=nHZslSr1gJAC&dq=uml&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/UML_Distilled.html?hl=&id=nHZslSr1gJAC"
+      },
+      "saleInfo": {
+        "country": "MA",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "MA",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED_FOR_ACCESSIBILITY",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=nHZslSr1gJAC&hl=&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "A guide to using UML describes major UML diagrams, their creation, and how to decipher them."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "prfl0WS5mBMC",
+      "etag": "KmCYcvKzfrY",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/prfl0WS5mBMC",
+      "volumeInfo": {
+        "title": "UML 2 en action",
+        "subtitle": "de l'analyse des besoins à la conception",
+        "authors": [
+          "Pascal Roques",
+          "Franck Vallée"
+        ],
+        "publisher": "Editions Eyrolles",
+        "publishedDate": "2007",
+        "description": "Une présentation de la nouvelle version d'UML. Description détaillée de toutes les étapes du processus de développement logiciel adapté aux systèmes client-serveur.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9782212121049"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "2212121040"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": false
+        },
+        "pageCount": 394,
+        "printType": "BOOK",
+        "categories": [
+          "Computers"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "0.5.0.0.preview.0",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=prfl0WS5mBMC&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=prfl0WS5mBMC&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+        },
+        "language": "fr",
+        "previewLink": "http://books.google.com/books?id=prfl0WS5mBMC&dq=uml&hl=&cd=5&source=gbs_api",
+        "infoLink": "http://books.google.com/books?id=prfl0WS5mBMC&dq=uml&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/UML_2_en_action.html?hl=&id=prfl0WS5mBMC"
+      },
+      "saleInfo": {
+        "country": "MA",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "MA",
+        "viewability": "NO_PAGES",
+        "embeddable": false,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": true
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=prfl0WS5mBMC&hl=&source=gbs_api",
+        "accessViewStatus": "NONE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Une présentation de la nouvelle version d&#39;UML. Description détaillée de toutes les étapes du processus de développement logiciel adapté aux systèmes client-serveur."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "KsM_PQAACAAJ",
+      "etag": "0cpZvMRzp8o",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/KsM_PQAACAAJ",
+      "volumeInfo": {
+        "title": "Merise et UML",
+        "subtitle": "pour la modélisation des systèmes d'information",
+        "authors": [
+          "Joseph Gabay"
+        ],
+        "publishedDate": "2004",
+        "description": "Ce livre a été conçu comme un outil d'apprentissage à la fois de Merise et d'UML. Il est en effet intéressant de proposer dans un même ouvrage les deux approches les plus pratiquées aujourd'hui dans le domaine de la modélisation des systèmes d'information. Cette nouvelle édition sert trois objectifs : présenter la méthode Merise telle qu'elle est largement utilisée dans les entreprises ; présenter la modélisation objet avec UML en illustrant le plus possible l'aspect théorique par des exemples et exercices tirés du domaine des systèmes d'information ; positionner Merise, méthode pratiquée depuis plus d'une vingtaine d'années, par rapport à UML qui est devenu, depuis quelques années, le standard dans le domaine de la modélisation, de l'analyse et de la conception objet. Guide complet des deux méthodes, cet ouvrage s'adresse aux étudiants et aux professionnels qui désirent acquérir les connaissances nécessaires à l'apprentissage de Merise et à la modélisation objet avec UML.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_10",
+            "identifier": "2100072056"
+          },
+          {
+            "type": "ISBN_13",
+            "identifier": "9782100072057"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": false
+        },
+        "pageCount": 289,
+        "printType": "BOOK",
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "preview-1.0.0",
+        "language": "fr",
+        "previewLink": "http://books.google.com/books?id=KsM_PQAACAAJ&dq=uml&hl=&cd=6&source=gbs_api",
+        "infoLink": "http://books.google.com/books?id=KsM_PQAACAAJ&dq=uml&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Merise_et_UML.html?hl=&id=KsM_PQAACAAJ"
+      },
+      "saleInfo": {
+        "country": "MA",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "MA",
+        "viewability": "NO_PAGES",
+        "embeddable": false,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=KsM_PQAACAAJ&hl=&source=gbs_api",
+        "accessViewStatus": "NONE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Ce livre a été conçu comme un outil d&#39;apprentissage à la fois de Merise et d&#39;UML."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "4SVaEAAAQBAJ",
+      "etag": "FOlGxGGQg6c",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/4SVaEAAAQBAJ",
+      "volumeInfo": {
+        "title": "Cahier d'exercices : conception des Systèmes d'information UML",
+        "subtitle": "Plus de 100 Exercices - Entraînez-vous à la modélisation",
+        "authors": [
+          "Yassine Ayadi"
+        ],
+        "publisher": "Les Éditions du Net",
+        "publishedDate": "2016-04-18",
+        "description": "Ce cahier n’est pas un ouvrage de formation comme les autres ; ce n’est pas un livre d’autoformation, ni un manuel de référence, ni même un manuel pratique,… Ce cahier rassemble des exercices et des problèmes que lesquels il est bon de s’entraîner à la conception des systèmes d’information en utilisant le langage UML. Il s’agit d’une banque de données d’énoncés que j’ai utilisés ces dix dernières années dans mes TD à l’institut supérieur de gestion de gabes (Tunisie), au sein du département Informatique appliquée à la gestion. Ce cahier est conçu de manière à ce que le lecteur puisse s’entraîner à l’écriture des différents diagrammes de la notation UML. Ce cahier convient pour des enseignements pour les étudiants de licence en informatique et pour les étudiants en génie informatique. Comme dans toute activité liée à la résolution des exercices et de problèmes, il est conseillé de rechercher une solution personnelle pour chacun des exercices proposés, mais je rajouterai qu’il convient de s’interdire de réfléchir trop longtemps sur un exercice sans trouver quoi que ce soit.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9782312042725"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "231204272X"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "pageCount": 14,
+        "printType": "BOOK",
+        "categories": [
+          "Education"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "0.0.1.0.preview.1",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=4SVaEAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=4SVaEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "fr",
+        "previewLink": "http://books.google.com/books?id=4SVaEAAAQBAJ&printsec=frontcover&dq=uml&hl=&cd=7&source=gbs_api",
+        "infoLink": "http://books.google.com/books?id=4SVaEAAAQBAJ&dq=uml&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Cahier_d_exercices_conception_des_Syst%C3%A8.html?hl=&id=4SVaEAAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "MA",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "MA",
+        "viewability": "ALL_PAGES",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": true
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=4SVaEAAAQBAJ&hl=&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Ce cahier n’est pas un ouvrage de formation comme les autres ; ce n’est pas un livre d’autoformation, ni un manuel de référence, ni même un manuel pratique,… Ce cahier rassemble des exercices et des problèmes que lesquels il est ..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "PrrOZu63WPYC",
+      "etag": "wxDUuSDM8es",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/PrrOZu63WPYC",
+      "volumeInfo": {
+        "title": "UML 2",
+        "subtitle": "initiation, exemples et exercices corrigés",
+        "authors": [
+          "Laurent Debrauwer",
+          "Fien Van der Heyde"
+        ],
+        "publisher": "Editions ENI",
+        "publishedDate": "2005",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_10",
+            "identifier": "2746014556"
+          },
+          {
+            "type": "ISBN_13",
+            "identifier": "9782746014558"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "pageCount": 286,
+        "printType": "BOOK",
+        "categories": [
+          "Computer software"
+        ],
+        "averageRating": 4.5,
+        "ratingsCount": 2,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "1.4.5.0.preview.1",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=PrrOZu63WPYC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=PrrOZu63WPYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "fr",
+        "previewLink": "http://books.google.com/books?id=PrrOZu63WPYC&printsec=frontcover&dq=uml&hl=&cd=8&source=gbs_api",
+        "infoLink": "http://books.google.com/books?id=PrrOZu63WPYC&dq=uml&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/UML_2.html?hl=&id=PrrOZu63WPYC"
+      },
+      "saleInfo": {
+        "country": "MA",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "MA",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.com/books/download/UML_2-sample-pdf.acsm?id=PrrOZu63WPYC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=PrrOZu63WPYC&hl=&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "VFpUDwAAQBAJ",
+      "etag": "slvREzLq2hY",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/VFpUDwAAQBAJ",
+      "volumeInfo": {
+        "title": "UML 2.5 par la pratique",
+        "subtitle": "Etudes de cas et exercices corrigés",
+        "authors": [
+          "Pascal Roques"
+        ],
+        "publisher": "Editions Eyrolles",
+        "publishedDate": "2018",
+        "description": "La 4e de couv. indique : \"Un cours pratique pour ceux qui suivent un cursus en génie logiciel accompagné par des exemples issus de l'expérience de l'auteur qui tient compte des méthodes agiles.\"",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9782212675658"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "2212675658"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": false
+        },
+        "pageCount": 411,
+        "printType": "BOOK",
+        "categories": [
+          "Computers"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "0.1.0.0.preview.0",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=VFpUDwAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=VFpUDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+        },
+        "language": "fr",
+        "previewLink": "http://books.google.com/books?id=VFpUDwAAQBAJ&dq=uml&hl=&cd=9&source=gbs_api",
+        "infoLink": "http://books.google.com/books?id=VFpUDwAAQBAJ&dq=uml&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/UML_2_5_par_la_pratique.html?hl=&id=VFpUDwAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "MA",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "MA",
+        "viewability": "NO_PAGES",
+        "embeddable": false,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": true
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=VFpUDwAAQBAJ&hl=&source=gbs_api",
+        "accessViewStatus": "NONE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "La 4e de couv. indique : &quot;Un cours pratique pour ceux qui suivent un cursus en génie logiciel accompagné par des exemples issus de l&#39;expérience de l&#39;auteur qui tient compte des méthodes agiles.&quot;"
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "PpglAQAACAAJ",
+      "etag": "wq0nCrGXtTY",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/PpglAQAACAAJ",
+      "volumeInfo": {
+        "title": "Modélisation UML avec Rational Rose 2000",
+        "authors": [
+          "Terry Quatrani"
+        ],
+        "publishedDate": "2000",
+        "description": "Rose 2000, outil de modélisation UML par excellence : Toutes les étapes du processus unifié de Rational, le RUP, et tous les artefacts d'un cycle de développement trouvent leur réplique dans l'outil Rational Rose 2000, le plus connu et le plus utilisé des outils de modélisation UML. Une approche d'UML originale et didactique à travers une étude de cas : UML, langage de modélisation puissant mais difficile d'accès, méritait d'être présenté sous cet angle pratique et simple, en rappelant les principes de modélisation modernes et le RUP. Ce livre est plus qu'un mode d'emploi, c'est un véritable didacticiel. .",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_10",
+            "identifier": "2212091737"
+          },
+          {
+            "type": "ISBN_13",
+            "identifier": "9782212091731"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": false
+        },
+        "pageCount": 248,
+        "printType": "BOOK",
+        "categories": [
+          "UML (Computer science)"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "preview-1.0.0",
+        "language": "fr",
+        "previewLink": "http://books.google.com/books?id=PpglAQAACAAJ&dq=uml&hl=&cd=10&source=gbs_api",
+        "infoLink": "http://books.google.com/books?id=PpglAQAACAAJ&dq=uml&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Mod%C3%A9lisation_UML_avec_Rational_Rose_200.html?hl=&id=PpglAQAACAAJ"
+      },
+      "saleInfo": {
+        "country": "MA",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "MA",
+        "viewability": "NO_PAGES",
+        "embeddable": false,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=PpglAQAACAAJ&hl=&source=gbs_api",
+        "accessViewStatus": "NONE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Rose 2000, outil de modélisation UML par excellence : Toutes les étapes du processus unifié de Rational, le RUP, et tous les artefacts d&#39;un cycle de développement trouvent leur réplique dans l&#39;outil Rational Rose 2000, le plus connu et ..."
+      }
+    }
+  ]
+}
