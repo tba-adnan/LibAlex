@@ -1,0 +1,6 @@
+<resources>
+    <style name="Theme.LibAlex.SplashScreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize the style attributes as needed -->
+        <item name="android:windowBackground">@drawable/liber</item>
+    </style>
+</resources>
