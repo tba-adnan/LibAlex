@@ -9,7 +9,7 @@ import { NumberPicker } from "react-widgets";
 import "react-widgets/styles.css";
 import cogoToast from "cogo-toast";
 import { Link } from "react-router-dom";
-
+import main_logo from '../../images/logo_trs.png'
 
 
 export default class MainBooks extends React.Component {
@@ -94,6 +94,8 @@ render(){
  <div>
       <nav class="font-sans flex flex-col text-center sm:flex-row sm:text-left sm:justify-between py-4 px-6 bg-white shadow-md sm:items-baseline w-full">
         <div class="mb-2 sm:mb-0">
+          {/* <img src={main_logo} height={50} width={50}></img> */}
+          <p className="font-sans text-lg">LibAlex</p>
         </div>
         <div>
         <AwesomeButton type="secondary" href="/saved">Mes favoris ⭐</AwesomeButton>
