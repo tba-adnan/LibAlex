@@ -92,18 +92,18 @@ render(){
     return(
       
  <div>
-      <nav class="font-sans flex flex-col text-center sm:flex-row sm:text-left sm:justify-between py-4 px-6 bg-white shadow sm:items-baseline w-full">
+      <nav class="font-sans flex flex-col text-center sm:flex-row sm:text-left sm:justify-between py-4 px-6 bg-white shadow-md sm:items-baseline w-full">
         <div class="mb-2 sm:mb-0">
         </div>
         <div>
-        <AwesomeButton type="secondary" href="/saved">Mes favoris</AwesomeButton>
+        <AwesomeButton type="secondary" href="/saved">Mes favoris ⭐</AwesomeButton>
         </div>
       </nav>
 
 
 
 <div class="min-h-min bg-transparent flex flex-col justify-center ">
-  <div class="hover:backdrop-blur-sm relative p-12 w-full sm:max-w-2xl sm:mx-auto my-px ">
+  <div class="hover:backdrop-blur-sm relative p-8 w-full sm:max-w-2xl sm:mx-auto my-px ">
     <div class="overflow-hidden z-0 rounded-full relative p-3 shadow-lg">
         <form role="form" class="relative flex z-50 bg-white rounded-full" onSubmit={this.handleSubmit}>
         <input type="text" placeholder="Chercher des livres par Nom ou ISBN..." class="rounded-full flex-1 px-6 py-4 text-gray-700 focus:outline-none font-sans" value={this.state.value} onChange={this.handleChange}></input>
@@ -119,7 +119,7 @@ render(){
     
     <div class="mt-[7px] ml-[25px] w-48 flex grid">
       <div class="">
-        <AwesomeButton onPress={this.toggleCollapse} type="secondary">Recherche avancée</AwesomeButton>
+        <AwesomeButton onPress={this.toggleCollapse} type="secondary">Recherche avancée ✨</AwesomeButton>
         <Collapse isOpened={this.state.isOpenadvanced}>
           <br></br>
         <p class="font-serif">Nombre de résultats :</p><NumberPicker max={40} defaultValue={this.state.resultsNum} onChange={this.handleChangenum} />

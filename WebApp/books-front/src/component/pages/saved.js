@@ -39,7 +39,7 @@ delBook = (id) => {
         <div class="mb-2 sm:mb-0">
         </div>
         <div class="space-x-4">
-        <AwesomeButton type="secondary" href="/">cherchez</AwesomeButton>
+        <AwesomeButton type="secondary" href="/">Cherchez 🔎</AwesomeButton>
         <AwesomeButton type="primary" href="/savings">Beta</AwesomeButton>
         </div>
       </nav>
