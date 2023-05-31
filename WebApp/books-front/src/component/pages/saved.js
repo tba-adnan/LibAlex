@@ -42,7 +42,7 @@ delBook = (id) => {
         <div class="space-x-4">
         <AwesomeButton type="secondary" href="/">Chercher plus 🔎</AwesomeButton>
         <AwesomeButton type="primary" href="/savings">Beta</AwesomeButton>
-        <AwesomeButton type="primary" href="">Token 🪙</AwesomeButton>
+        <AwesomeButton type="primary" href="">Token 🎟️</AwesomeButton>
         </div>
       </nav>
 </div>
@@ -62,8 +62,9 @@ delBook = (id) => {
 <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-violet-600 bg-violet-200 mr-2 last:mr-0 mr-1">Date : {book.release_date}</span>
 </div>
 
-<div class="mt-6">
+<div class="mt-6 space-x-2">
                 <AwesomeButton type="danger" onPress={()=>this.delBook(book.id)}>Supprimer</AwesomeButton>
+                <AwesomeButton type="secondary" onPress={console.log("Anchor")}>AI ✨</AwesomeButton>
 </div>
               </div>
             </div>
