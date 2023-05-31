@@ -91,54 +91,64 @@ render(){
 
     return(
       
- <div>
-      <nav class="font-sans flex flex-col text-center sm:flex-row sm:text-left sm:justify-between py-4 px-6 bg-white shadow-md sm:items-baseline w-full">
-        <div class="mb-2 sm:mb-0">
-          {/* <img src={main_logo} height={50} width={50}></img> */}
-          <p className="font-sans text-lg">LibAlex</p>
-        </div>
-        <div>
-        <AwesomeButton type="secondary" href="/saved">Mes favoris ⭐</AwesomeButton>
-        </div>
-      </nav>
+ <div className="">
+    
+<div class="flex justify-center items-center pt-2">
+  <p className="text-4xl italic">LibAlex.</p>
+</div>
 
 
 
-<div class="min-h-min bg-transparent flex flex-col justify-center ">
-  <div class="hover:backdrop-blur-sm relative p-8 w-full sm:max-w-2xl sm:mx-auto my-px ">
+<div class="min-h-min bg-transparent flex flex-col justify-center">
+  <div class="hover:backdrop-blur-sm relative p-4 w-full sm:max-w-2xl sm:mx-auto my-px ">
     <div class="overflow-hidden z-0 rounded-full relative p-3 shadow-lg">
         <form role="form" class="relative flex z-50 bg-white rounded-full" onSubmit={this.handleSubmit}>
         <input type="text" placeholder="Chercher des livres par Nom ou ISBN..." class="rounded-full flex-1 px-6 py-4 text-gray-700 focus:outline-none font-sans" value={this.state.value} onChange={this.handleChange}></input>
-        <button class="bg-indigo-500 text-white rounded-full font-semibold px-8 py-4 hover:bg-indigo-400 focus:bg-indigo-600 focus:outline-none">Search</button>
+        <button class="bg-indigo-500 text-white rounded-full font-semibold px-8 py-4 hover:bg-purple-400 focus:bg-indigo-600 focus:outline-none">Search</button>
         </form>
         <div class="glow glow-1 z-10 bg-pink-400 absolute"></div>
         <div class="glow glow-2 z-20 bg-purple-400 absolute"></div>
         <div class="glow glow-3 z-30 bg-yellow-400 absolute"></div>
         <div class="glow glow-4 z-40 bg-blue-400 absolute"></div>       
     </div>
-    {/* <AwesomeButton type="secondary">Anchor</AwesomeButton> */}
+
     
     
-    <div class="mt-[7px] ml-[25px] w-48 flex grid">
-      <div class="">
-        <AwesomeButton onPress={this.toggleCollapse} type="secondary">Recherche avancée ✨</AwesomeButton>
-        <Collapse isOpened={this.state.isOpenadvanced}>
-          <br></br>
-        <p class="font-serif">Nombre de résultats :</p><NumberPicker max={40} defaultValue={this.state.resultsNum} onChange={this.handleChangenum} />
-          <p class="font-serif">Filtrer par :</p><select value={this.state.selectedOption} onChange={this.handleChangeselect} class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition
-      ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" >
-                {select_options.map(option => (
-                    <option key={option.value} value={option.value}>
-                        {option.label}
-                    </option>
-                ))}
-            </select>
-        </Collapse>
-        </div>
-    </div>
+
+    <div className="mt-[7px] ml-[25px] flex ">
+  <div class="mr-2">
+    <AwesomeButton onPress={this.toggleCollapse} type="secondary" class="whitespace-nowrap">Recherche avancée ✨</AwesomeButton>
+    <Collapse isOpened={this.state.isOpenadvanced}>
+      <br />
+      <div>
+        <p class="font-serif shadow-lg">Nombre de résultats :</p>
+        <NumberPicker max={40} defaultValue={this.state.resultsNum} onChange={this.handleChangenum} />
+        <p class="font-serif">Filtrer par :</p>
+        <select value={this.state.selectedOption} onChange={this.handleChangeselect} class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
+          {select_options.map(option => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+      </div>
+    </Collapse>
+  </div>
+
+  <div className="">
+    <AwesomeButton type="secondary" href="/saved">Mes favoris ⭐</AwesomeButton>
+  </div>
 </div>
 
-<div className="grid h-screen place-items-center pb-[60px]" style={{height: "540px", overflow: "scroll", overflowX: "hidden" }}>
+
+
+
+   
+</div>
+{/*  */}
+
+
+<div className="grid h-screen place-items-center pb-[60px] overflow-y-auto" style={{height: "540px", overflowX: "hidden" }}>
 {books.length > 0 && books.map((book, index) => ( 
 <div key={index}>
               <br></br>
