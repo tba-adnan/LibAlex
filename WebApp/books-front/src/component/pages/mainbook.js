@@ -9,98 +9,109 @@ import { NumberPicker } from "react-widgets";
 import "react-widgets/styles.css";
 import cogoToast from "cogo-toast";
 import { Link } from "react-router-dom";
-import main_logo from '../../images/logo_trs.png'
-
+import main_logo from '../../images/logo_trs.png';
+import { v4 as uuidv4 } from 'uuid';
 
 export default class MainBooks extends React.Component {
-    constructor(){
-        super();
-        this.state = 
-        {
-        value:'', search:'', books:'', 
-        isOpen: false,  collapsed: [], 
-        advancedCollpase:'', 
-        isOpenadvanced: false,
-        resultsNum: 25,
-        selectedOption: 'newest',
-      };
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChangenum = this.handleChangenum.bind(this);
-        this.handleChangeselect = this.handleChangeselect.bind(this);
-        this.passValues = this.passValues.bind(this);
-    }
-
-    handleChange(event) {
-        this.setState({value: event.target.value});
-    }
-
-    handleChangenum(newValue) {
-      this.setState({resultsNum: newValue });
-      // console.log(this.state.resultsNum)
-    }
-  
-    handleSubmit(event) {
-      axios.get("https://www.googleapis.com/books/v1/volumes?q="+this.state.value+"&maxResults="+this.state.resultsNum+"&orderBy="+this.state.selectedOption).then((response) => {this.setState({search : response.data.items}); 
-      this.setState({books:response.data.items})});
-      event.preventDefault();
-    }
-
-    handleCollapse(index) {
-        const collapsed = this.state.collapsed.slice();
-        collapsed[index] = !collapsed[index];
-        this.setState({ collapsed });
-    }
-
-    toggleCollapse = () => {
-      this.setState(prevState => ({isOpenadvanced: !prevState.isOpenadvanced,}));
-    }
-
-    handleChangeselect = (event) => {
-        this.setState({ selectedOption: event.target.value });
-        // console.log(this.state.selectedOption)
+  constructor() {
+    super();
+    this.state = {
+      value: '',
+      search: '',
+      books: '',
+      isOpen: false,
+      collapsed: [],
+      advancedCollpase: '',
+      isOpenadvanced: false,
+      resultsNum: 25,
+      selectedOption: 'newest',
+      uuid: localStorage.getItem('uuid') || uuidv4().substr(0, 5), // Retrieve UUID from local storage or generate a new one
     };
 
-passValues = (book) => {
-//  console.log(book)
- const alertBook_name = book[0];
- const booksave_string = JSON.stringify(book)
-//  console.log(book[0], book[1], book[2], book[3])
-//  console.log(booksave_string)
-// 
- const instance = axios.create({
-  baseURL: 'http://127.0.0.1:8000',
-  headers: {'Access-Control-Allow-Origin': '*',},
-});
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChangenum = this.handleChangenum.bind(this);
+    this.handleChangeselect = this.handleChangeselect.bind(this);
+    this.passValues = this.passValues.bind(this);
+  }
 
-instance.post("/api/v1/save?book_name="+book[0]+"&language="+book[1]+"&release_date="+book[2]+"&page_count="+book[3]).then((response) => {
-    cogoToast.success("Votre livre "+'"'+alertBook_name+'"'+" a été sauvegardé", { position: 'top-right', heading: 'Succès' });})
-  .catch((error) => {
-    cogoToast.warn("Une erreur est survenue.", { position: 'top-right', heading: 'Erreur!' });
-  });      
-}
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+  }
 
-render(){
+  handleChangenum(newValue) {
+    this.setState({ resultsNum: newValue });
+  }
+
+  handleSubmit(event) {
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${this.state.value}&maxResults=${this.state.resultsNum}&orderBy=${this.state.selectedOption}`)
+      .then((response) => {
+        this.setState({ search: response.data.items });
+        this.setState({ books: response.data.items });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    event.preventDefault();
+  }
+
+  handleCollapse(index) {
+    const collapsed = this.state.collapsed.slice();
+    collapsed[index] = !collapsed[index];
+    this.setState({ collapsed });
+  }
+
+  toggleCollapse = () => {
+    this.setState((prevState) => ({
+      isOpenadvanced: !prevState.isOpenadvanced,
+    }));
+  }
+
+  handleChangeselect = (event) => {
+    this.setState({ selectedOption: event.target.value });
+  };
+
+  passValues = (book) => {
+    const alertBook_name = book[0];
+    const booksave_string = JSON.stringify(book);
+
+    const instance = axios.create({
+      baseURL: 'http://127.0.0.1:8000',
+      headers: { 'Access-Control-Allow-Origin': '*' },
+    });
+
+    instance
+      .post(`/api/v1/save?book_name=${book[0]}&language=${book[1]}&release_date=${book[2]}&page_count=${book[3]}&uuid=${this.state.uuid}`)
+      .then((response) => {
+        cogoToast.success(`Votre livre "${alertBook_name}" a été sauvegardé`, { position: 'top-right', heading: 'Succès' });
+      })
+      .catch((error) => {
+        cogoToast.warn('Une erreur est survenue.', { position: 'top-right', heading: 'Erreur!' });
+      });
+  }
+
+  componentDidMount() {
+    localStorage.setItem('uuid', this.state.uuid); // Store the UUID in local storage
+  }
+
+  render() {
     const books = this.state.books;
     const book_zero = 'industryIdentifiers[0]';
     const select_options = [
-            { value: 'newest', label: 'Le plus récent' },
-            { value: 'relevance', label: 'Pertinence' },
-            { value: 'ORDER_BY_INDEFINED', label: 'Indéterminée' },];
+      { value: 'newest', label: 'Le plus récent' },
+      { value: 'relevance', label: 'Pertinence' },
+      { value: 'ORDER_BY_INDEFINED', label: 'Indéterminée' },
+    ];
 
-    return(
-      
- <div className="">
-    
-<div class="flex justify-center items-center pt-2">
-  <p className="text-4xl italic">LibAlex.</p>
-</div>
+    return (
+      <div className="">
+        <div class="flex justify-center items-center pt-2">
+          <p className="text-4xl italic">LibAlex.</p>
+        </div>
 
-
-
-<div class="min-h-min bg-transparent flex flex-col justify-center">
-  <div class="hover:backdrop-blur-sm relative p-4 w-full sm:max-w-2xl sm:mx-auto my-px ">
+        <div class="min-h-min bg-transparent flex flex-col justify-center">
+        <div class="hover:backdrop-blur-sm relative p-4 w-full sm:max-w-2xl sm:mx-auto my-px ">
     <div class="overflow-hidden z-0 rounded-full relative p-3 shadow-lg">
         <form role="form" class="relative flex z-50 bg-white rounded-full" onSubmit={this.handleSubmit}>
         <input type="text" placeholder="Chercher des livres par Nom ou ISBN..." class="rounded-full flex-1 px-6 py-4 text-gray-700 focus:outline-none font-sans" value={this.state.value} onChange={this.handleChange}></input>
@@ -139,13 +150,7 @@ render(){
     <AwesomeButton type="secondary" href="/saved">Mes favoris ⭐</AwesomeButton>
   </div>
 </div>
-
-
-
-
-   
 </div>
-{/*  */}
 
 
 <div className="grid h-screen place-items-center pb-[60px] overflow-y-auto" style={{height: "540px", overflowX: "hidden" }}>

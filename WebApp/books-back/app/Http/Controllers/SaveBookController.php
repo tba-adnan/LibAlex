@@ -14,6 +14,7 @@ class SaveBookController extends Controller
     $language = $request->input('language');
     $release_date = $request->input('release_date');
     $page_count = $request->input('page_count');
+    $uuid = $request->input('uuid');
     
     $book = new Book();
     $book->book_title = $book_name;
@@ -21,6 +22,7 @@ class SaveBookController extends Controller
     $book->language = $language;
     $book->page_count = $page_count;
     $book->release_date = $release_date;
+    $book->uuid = $uuid;
     $book->save();
     // 
     return [
