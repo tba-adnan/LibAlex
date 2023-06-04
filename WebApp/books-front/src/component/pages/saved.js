@@ -57,7 +57,8 @@ export default class Saved extends Component {
       apiKey: OPENAI_API_KEY
     });
     const openai = new OpenAIApi(configuration);
-    const prompt = "give the summary of the book called atomic habits";
+    const prompt = `give the summary of the book called ${book.book_title} in french`;
+
     try {
       const response = await openai.createCompletion({
         model: "text-davinci-003",
@@ -96,7 +97,7 @@ export default class Saved extends Component {
         <div>
           <nav className="font-sans flex flex-col text-center sm:flex-row sm:text-left sm:justify-between py-4 px-6 bg-white shadow-md sm:items-baseline w-full">
             <div className="mb-2 sm:mb-0">
-              <p className="text-2xl bold italic">LibAlex</p>
+              <p className="text-3xl bold italic pl-6">LibAlex</p>
             </div>
             <div className="space-x-4">
               <AwesomeButton type="secondary" href="/">{language === 'en' ? 'Search more 🔎' : 'Chercher plus 🔎'}</AwesomeButton>
@@ -115,9 +116,9 @@ export default class Saved extends Component {
                   <div className="p-6">
                     <h3 className="text-lg font-serif mb-4">{book.book_title} :</h3>
                     <div className='flex flex-col space-y-2'>
-                      <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-green-600 bg-green-200  last:mr-0 mr-1">Pages : {book.page_count}</span>
-                      <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-blue-600 bg-blue-200  last:mr-0 mr-1">Language : {book.language}</span>
-                      <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-violet-600 bg-violet-200 last:mr-0 mr-1">Date : {book.release_date}</span>
+                      <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-green-600 bg-green-200  last:mr-0 mr-1">Pages: {book.page_count}</span>
+                      <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-blue-600 bg-blue-200  last:mr-0 mr-1">Language: {book.language}</span>
+                      <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-violet-600 bg-violet-200 last:mr-0 mr-1">Date: {book.release_date}</span>
                     </div>
 
                     <div className="mt-6 space-x-2">
@@ -149,17 +150,22 @@ export default class Saved extends Component {
                 <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                   <div className="sm:flex sm:items-start">
                     <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                      <h3 className="text-lg font-semibold leading-6">{this.state.selectedBook.book_title}</h3>
+                      <h3 className="text-lg font-semibold leading-6">{this.state.selectedBook.book_title} : </h3>
+                      <br></br>
                       {isLoading ? (
-                        <p className="text-sm italic">Please wait...</p>
+                        <p className="text-sm italic">
+                          <span className="animate-spin mr-1">&#8987;</span>
+                          Please wait...
+                        </p>
                       ) : (
                         <p className="text-sm italic">{this.state.bookSummary}</p>
                       )}
                     </div>
                   </div>
                 </div>
+
                 <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                  <AwesomeButton type="secondary" onPress={this.closeModal}>
+                  <AwesomeButton type="primary" onPress={this.closeModal}>
                     {language === 'en' ? 'Close' : 'Fermer'}
                   </AwesomeButton>
                 </div>
