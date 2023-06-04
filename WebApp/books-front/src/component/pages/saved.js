@@ -16,7 +16,8 @@ export default class Saved extends Component {
       selectedBook: null,
       bookSummary: '',
       language: 'en',
-      isLoading: false
+      isLoading: false,
+      uuid: '',
     };
 
     this.delBook = this.delBook.bind(this);
@@ -30,6 +31,11 @@ export default class Saved extends Component {
       .catch(err => {
         console.log(err);
       });
+
+    const uuid = localStorage.getItem('uuid');
+    if (uuid) {
+      this.setState({ uuid });
+    }
   }
 
   delBook = (id) => {
@@ -42,7 +48,7 @@ export default class Saved extends Component {
       });
     cogoToast.success("Sauvegarde du livre supprimé avec succès!", {
       position: 'bottom-right',
-      heading: 'Succès'
+      heading: 'Succès :'
     });
   }
 
@@ -89,8 +95,21 @@ export default class Saved extends Component {
     this.setState({ language: newLanguage });
   }
 
+  copyUUID = () => {
+    const textField = document.createElement('textarea');
+    textField.innerText = this.state.uuid;
+    document.body.appendChild(textField);
+    textField.select();
+    document.execCommand('copy');
+    textField.remove();
+    cogoToast.success("UUID copied to clipboard!", {
+      position: 'bottom-right',
+      heading: 'Success : '
+    });
+  }
+
   render() {
-    const { language, isLoading } = this.state;
+    const { language, isLoading, uuid } = this.state;
 
     return (
       <div>
@@ -101,7 +120,7 @@ export default class Saved extends Component {
             </div>
             <div className="space-x-4">
               <AwesomeButton type="secondary" href="/">{language === 'en' ? 'Search more 🔎' : 'Chercher plus 🔎'}</AwesomeButton>
-              <AwesomeButton type="primary" href="">{language === 'en' ? 'Token 🎟️' : 'Jeton 🎟️'}</AwesomeButton>
+              <AwesomeButton type="primary" onPress={this.copyUUID}>{language === 'en' ? 'Token 🎟️' : 'Jeton 🎟️'}</AwesomeButton>
               <AwesomeButton type="primary" href="/savings">Beta</AwesomeButton>
               <AwesomeButton type="primary" onPress={this.switchLanguage}>{language === 'en' ? 'FR' : 'EN'}</AwesomeButton>
             </div>
@@ -150,7 +169,7 @@ export default class Saved extends Component {
                 <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                   <div className="sm:flex sm:items-start">
                     <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                      <h3 className="text-lg font-semibold leading-6">{this.state.selectedBook.book_title} : </h3>
+                      <h3 className="text-lg font-semibold leading-6">{this.state.selectedBook.book_title} :</h3>
                       <br></br>
                       {isLoading ? (
                         <p className="text-sm italic">
@@ -160,6 +179,7 @@ export default class Saved extends Component {
                       ) : (
                         <p className="text-sm italic">{this.state.bookSummary}</p>
                       )}
+                      {/* <p className="text-sm font-semibold">UUID/Token: {uuid}</p> */}
                     </div>
                   </div>
                 </div>
