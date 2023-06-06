@@ -13,6 +13,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 
+
 class MainActivity : AppCompatActivity() {
     private lateinit var searchEditText: EditText
     private lateinit var searchButton: Button
@@ -43,8 +44,8 @@ class MainActivity : AppCompatActivity() {
             try {
                 val response = booksApiClient.searchBooks(query, maxResults)
                 withContext(Dispatchers.Main) {
-                    val books = response
-                    if (books.isNotEmpty()) {
+                    if (response.isNotEmpty()) {
+                        val books = response.map { it.volumeInfo }
                         val adapter = ArrayAdapter(
                             this@MainActivity,
                             android.R.layout.simple_list_item_1,
@@ -53,18 +54,17 @@ class MainActivity : AppCompatActivity() {
                         booksListView.adapter = adapter
 
                         booksListView.setOnItemClickListener { _, _, position, _ ->
-                            val book = books[position]
+                            val book = response[position]
                             // Handle book selection
                         }
                     } else {
-                        // Handle error response
-                        // You can handle the error scenario here
+                        // Handle empty response
                     }
                 }
             } catch (e: Exception) {
                 // Handle network failure
-                // You can handle the network failure scenario here
             }
         }
     }
+
 }

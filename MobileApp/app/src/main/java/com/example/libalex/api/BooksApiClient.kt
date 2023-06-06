@@ -1,21 +1,39 @@
-import com.example.libalex.model.Book
+import android.util.Log
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class BooksApiClient {
-    private val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("https://www.googleapis.com/books/")
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
+    private val retrofit: Retrofit
+    private val apiService: BooksApiService
 
-    private val apiService: BooksApiService = retrofit.create(BooksApiService::class.java)
+    init {
+        val gson: Gson = GsonBuilder()
+            .setLenient()
+            .create()
+
+        retrofit = Retrofit.Builder()
+            .baseUrl("https://www.googleapis.com/books/")
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build()
+
+        apiService = retrofit.create(BooksApiService::class.java)
+    }
 
     fun searchBooks(query: String, maxResults: Int): List<Book> {
         val response = apiService.searchBooks(query, maxResults).execute()
-        return if (response.isSuccessful) {
-            response.body()?.items ?: emptyList()
+        if (response.isSuccessful) {
+            val booksResponse = response.body()
+            Log.d("BooksApiClient", "API Response: $booksResponse")
+            return booksResponse?.items?.map { bookResponse ->
+                Book(bookResponse.volumeInfo)
+            } ?: emptyList()
         } else {
-            emptyList()
+            Log.e("BooksApiClient", "API Error: ${response.errorBody()}")
+            return emptyList()
         }
     }
+
+
 }
