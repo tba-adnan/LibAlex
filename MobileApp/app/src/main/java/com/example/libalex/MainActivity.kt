@@ -1,17 +1,16 @@
+package com.example.libalex
+
+import BooksApiClient
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.libalex.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class MainActivity : AppCompatActivity() {
@@ -44,27 +43,27 @@ class MainActivity : AppCompatActivity() {
             try {
                 val response = booksApiClient.searchBooks(query, maxResults)
                 withContext(Dispatchers.Main) {
-                    if (response.isSuccessful) {
-                        val books = response.body()
-                        if (books != null) {
-                            val adapter = ArrayAdapter(
-                                this@MainActivity,
-                                android.R.layout.simple_list_item_1,
-                                books.map { it.title }
-                            )
-                            booksListView.adapter = adapter
+                    val books = response
+                    if (books.isNotEmpty()) {
+                        val adapter = ArrayAdapter(
+                            this@MainActivity,
+                            android.R.layout.simple_list_item_1,
+                            books.map { it.title }
+                        )
+                        booksListView.adapter = adapter
 
-                            booksListView.setOnItemClickListener { _, _, position, _ ->
-                                val book = books[position]
-                                // Handle book selection
-                            }
+                        booksListView.setOnItemClickListener { _, _, position, _ ->
+                            val book = books[position]
+                            // Handle book selection
                         }
                     } else {
                         // Handle error response
+                        // You can handle the error scenario here
                     }
                 }
             } catch (e: Exception) {
                 // Handle network failure
+                // You can handle the network failure scenario here
             }
         }
     }

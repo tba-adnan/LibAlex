@@ -4,13 +4,13 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface BooksApiService {
-    @GET("volumes")
+    @GET("v1/volumes")
     fun searchBooks(
         @Query("q") query: String,
         @Query("maxResults") maxResults: Int
-    ): Call<BooksApiResponse>
+    ): Call<BooksResponse>
 }
 
-data class BooksApiResponse(
+data class BooksResponse(
     val items: List<Book>
 )
