@@ -6,13 +6,12 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-
-
 
 class MainActivity : AppCompatActivity() {
     private lateinit var searchEditText: EditText
@@ -55,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
                         booksListView.setOnItemClickListener { _, _, position, _ ->
                             val book = response[position]
-                            // Handle book selection
+                            displayBookToast(book.volumeInfo.title)
                         }
                     } else {
                         // Handle empty response
@@ -67,4 +66,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun displayBookToast(bookTitle: String) {
+        Toast.makeText(this, "Selected book: $bookTitle", Toast.LENGTH_SHORT).show()
+    }
 }

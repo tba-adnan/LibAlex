@@ -1,0 +1,174 @@
+now in my app (LibAlex) ( in Android kotlin) i want to add a button in the list that when I click on it the book is getting saved in this localhost API  note the that I want to only save the book title and you should keep the google books api part since i want to display the books from the API, provide step by step the full code. just like a CRUD
+
+
+for my MainActivity.kt i have
+
+
+"""
+package com.example.libalex
+
+import BooksApiClient
+import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ListView
+import androidx.appcompat.app.AppCompatActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+
+
+
+class MainActivity : AppCompatActivity() {
+    private lateinit var searchEditText: EditText
+    private lateinit var searchButton: Button
+    private lateinit var booksListView: ListView
+
+    private val booksApiClient = BooksApiClient()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        searchEditText = findViewById(R.id.searchEditText)
+        searchButton = findViewById(R.id.searchButton)
+        booksListView = findViewById(R.id.booksListView)
+
+        searchButton.setOnClickListener {
+            val query = searchEditText.text.toString()
+            if (query.isNotEmpty()) {
+                searchBooks(query)
+            }
+        }
+    }
+
+    private fun searchBooks(query: String) {
+        val maxResults = 10
+
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val response = booksApiClient.searchBooks(query, maxResults)
+                withContext(Dispatchers.Main) {
+                    if (response.isNotEmpty()) {
+                        val books = response.map { it.volumeInfo }
+                        val adapter = ArrayAdapter(
+                            this@MainActivity,
+                            android.R.layout.simple_list_item_1,
+                            books.map { it.title }
+                        )
+                        booksListView.adapter = adapter
+
+                        booksListView.setOnItemClickListener { _, _, position, _ ->
+                            val book = response[position]
+                            // Handle book selection
+                        }
+                    } else {
+                        // Handle empty response
+                    }
+                }
+            } catch (e: Exception) {
+                // Handle network failure
+            }
+        }
+    }
+
+}
+
+"""
+
+
+in /api/BooksApiClient.kt I have  : 
+import android.util.Log
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+
+class BooksApiClient {
+    private val retrofit: Retrofit
+    private val apiService: BooksApiService
+
+    init {
+        val gson: Gson = GsonBuilder()
+            .setLenient()
+            .create()
+
+        retrofit = Retrofit.Builder()
+            .baseUrl("https://www.googleapis.com/books/")
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build()
+
+        apiService = retrofit.create(BooksApiService::class.java)
+    }
+
+    fun searchBooks(query: String, maxResults: Int): List<Book> {
+        val response = apiService.searchBooks(query, maxResults).execute()
+        if (response.isSuccessful) {
+            val booksResponse = response.body()
+            Log.d("BooksApiClient", "API Response: $booksResponse")
+            return booksResponse?.items?.map { bookResponse ->
+                Book(bookResponse.volumeInfo)
+            } ?: emptyList()
+        } else {
+            Log.e("BooksApiClient", "API Error: ${response.errorBody()}")
+            return emptyList()
+        }
+    }
+
+
+}
+
+
+ for /api/BooksApiService.kt i have 
+import retrofit2.Call
+import retrofit2.http.GET
+import retrofit2.http.Query
+
+interface BooksApiService {
+    @GET("v1/volumes?")
+    fun searchBooks(
+        @Query("q") query: String,
+        @Query("maxResults") maxResults: Int
+    ): Call<BooksApiResponse>
+}
+
+data class BooksApiResponse(
+    val items: List<Book>
+)
+
+
+for /model/Book.kt i have  : 
+
+data class Book(
+    val volumeInfo: VolumeInfo
+)
+
+data class VolumeInfo(
+    val title: String,
+    val publishedDate: String
+)
+
+
+
+
+
+ For the locacl host api this is the code extracted from the web part in react you can get my local api structure : 
+
+  const instance = axios.create({
+      baseURL: 'http://127.0.0.1:8000',
+      headers: { 'Access-Control-Allow-Origin': '*' },
+    });
+
+    instance
+      .post(`/api/v1/save?book_name=${book[0]}&language=${book[1]}&release_date=${book[2]}&page_count=${book[3]}&uuid=${this.state.uuid}`)
+      .then((response) => {
+        cogoToast.success(`Votre livre "${alertBook_name}" a été sauvegardé`, { position: 'top-right', heading: 'Succès' });
+      })
+      .catch((error) => {
+        cogoToast.warn('Une erreur est survenue.', { position: 'top-right', heading: 'Erreur!' });
+      });
+
+
+provide the full code of EACH FILE with logic with a simplified interface.
