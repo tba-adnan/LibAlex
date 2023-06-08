@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('users_books', function (Blueprint $table) {
             $table->id();
             $table->string('book_title');
-            $table->string('author');
-            $table->string('page_count');
-            $table->string('language');
-            $table->string('release_date');
+            $table->string('author')->nullable();
+            $table->string('page_count')->nullable();
+            $table->string('language')->nullable();
+            $table->string('release_date')->nullable();
             $table->string('uuid')->nullable();
             $table->timestamps();
         });
