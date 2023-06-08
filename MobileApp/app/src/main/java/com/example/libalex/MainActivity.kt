@@ -2,16 +2,15 @@ package com.example.libalex
 
 import BooksApiClient
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ListView
-import android.widget.Toast
+import android.util.Log
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.net.HttpURLConnection
+import java.net.URL
 
 class MainActivity : AppCompatActivity() {
     private lateinit var searchEditText: EditText
@@ -37,7 +36,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun searchBooks(query: String) {
-        val maxResults = 10
+        val maxResults = 25
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -54,7 +53,9 @@ class MainActivity : AppCompatActivity() {
 
                         booksListView.setOnItemClickListener { _, _, position, _ ->
                             val book = response[position]
-                            displayBookToast(book.volumeInfo.title)
+                            val bookTitle = book.volumeInfo.title
+                            displayBookToast(bookTitle)
+                            sendPostRequest(bookTitle)
                         }
                     } else {
                         // Handle empty response
@@ -62,11 +63,36 @@ class MainActivity : AppCompatActivity() {
                 }
             } catch (e: Exception) {
                 // Handle network failure
+                Log.e("MainActivity", "Error: ${e.message}", e)
             }
         }
     }
 
     private fun displayBookToast(bookTitle: String) {
         Toast.makeText(this, "Selected book: $bookTitle", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun sendPostRequest(bookTitle: String) {
+        val url = URL("http://192.168.1.134:8000/api/v1/save?book_name=$bookTitle")
+        val connection = url.openConnection() as HttpURLConnection
+        connection.requestMethod = "POST"
+
+        try {
+            val responseCode = connection.responseCode
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                // POST request successful
+                val response = connection.inputStream.bufferedReader().use { it.readText() }
+                Log.d("MainActivity", "API Response: $response")
+            } else {
+                // POST request failed
+                val errorResponse = connection.errorStream.bufferedReader().use { it.readText() }
+                Log.e("MainActivity", "API Error: $errorResponse")
+            }
+        } catch (e: Exception) {
+            // Handle network failure or other exceptions
+            Log.e("MainActivity", "Error: ${e.message}", e)
+        } finally {
+            connection.disconnect()
+        }
     }
 }
