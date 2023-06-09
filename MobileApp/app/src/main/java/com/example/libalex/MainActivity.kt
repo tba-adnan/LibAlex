@@ -3,7 +3,11 @@ package com.example.libalex
 import BooksApiClient
 import android.os.Bundle
 import android.util.Log
-import android.widget.*
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ListView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -69,30 +73,34 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun displayBookToast(bookTitle: String) {
-        Toast.makeText(this, "Selected book: $bookTitle", Toast.LENGTH_SHORT).show()
+        runOnUiThread {
+            Toast.makeText(this, "Selected book: $bookTitle", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun sendPostRequest(bookTitle: String) {
-        val url = URL("http://192.168.1.134:8000/api/v1/save?book_name=$bookTitle")
-        val connection = url.openConnection() as HttpURLConnection
-        connection.requestMethod = "POST"
+        CoroutineScope(Dispatchers.IO).launch {
+            val url = URL("http://192.168.2.40:8000/api/v1/save?book_name=$bookTitle")
+            val connection = url.openConnection() as HttpURLConnection
+            connection.requestMethod = "POST"
 
-        try {
-            val responseCode = connection.responseCode
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-                // POST request successful
-                val response = connection.inputStream.bufferedReader().use { it.readText() }
-                Log.d("MainActivity", "API Response: $response")
-            } else {
-                // POST request failed
-                val errorResponse = connection.errorStream.bufferedReader().use { it.readText() }
-                Log.e("MainActivity", "API Error: $errorResponse")
+            try {
+                val responseCode = connection.responseCode
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    // POST request successful
+                    val response = connection.inputStream.bufferedReader().use { it.readText() }
+                    Log.d("MainActivity", "API Response: $response")
+                } else {
+                    // POST request failed
+                    val errorResponse = connection.errorStream.bufferedReader().use { it.readText() }
+                    Log.e("MainActivity", "API Error: $errorResponse")
+                }
+            } catch (e: Exception) {
+                // Handle network failure or other exceptions
+                Log.e("MainActivity", "Error: ${e.message}", e)
+            } finally {
+                connection.disconnect()
             }
-        } catch (e: Exception) {
-            // Handle network failure or other exceptions
-            Log.e("MainActivity", "Error: ${e.message}", e)
-        } finally {
-            connection.disconnect()
         }
     }
 }
