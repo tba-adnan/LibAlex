@@ -1,14 +1,12 @@
 package com.example.libalex
 
 import BooksApiClient
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ListView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -16,11 +14,11 @@ import kotlinx.coroutines.withContext
 import java.net.HttpURLConnection
 import java.net.URL
 
+
 class MainActivity : AppCompatActivity() {
     private lateinit var searchEditText: EditText
     private lateinit var searchButton: Button
     private lateinit var booksListView: ListView
-
     private val booksApiClient = BooksApiClient()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +34,11 @@ class MainActivity : AppCompatActivity() {
             if (query.isNotEmpty()) {
                 searchBooks(query)
             }
+        }
+
+        val floatingButton: FloatingActionButton = findViewById(R.id.fabBooks)
+        floatingButton.setOnClickListener {
+            startActivity(Intent(this, BookActivity::class.java))
         }
     }
 
@@ -74,13 +77,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun displayBookToast(bookTitle: String) {
         runOnUiThread {
-            Toast.makeText(this, "Selected book: $bookTitle", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Book Saved : $bookTitle", Toast.LENGTH_LONG).show()
         }
     }
 
     private fun sendPostRequest(bookTitle: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            val url = URL("http://192.168.2.40:8000/api/v1/save?book_name=$bookTitle")
+            val url = URL("http://192.168.100.32:8000/api/v1/save?book_name=$bookTitle")
             val connection = url.openConnection() as HttpURLConnection
             connection.requestMethod = "POST"
 
