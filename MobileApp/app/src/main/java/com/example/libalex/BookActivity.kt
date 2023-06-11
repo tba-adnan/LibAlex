@@ -1,8 +1,9 @@
 package com.example.libalex
-
 import BooksApiClient
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
@@ -38,6 +39,12 @@ class BookActivity : AppCompatActivity() {
                             bookTitles
                         )
                         booksListView.adapter = adapter
+
+                        booksListView.onItemClickListener =
+                            AdapterView.OnItemClickListener { _, _, position, _ ->
+                                val bookId = response[position].id
+                                showDeleteConfirmationDialog(bookId)
+                            }
                     } else {
                         // Handle empty response
                     }
@@ -49,4 +56,38 @@ class BookActivity : AppCompatActivity() {
         }
     }
 
+    private fun showDeleteConfirmationDialog(bookId: Int) {
+        val dialog = AlertDialog.Builder(this)
+            .setTitle("Delete Book")
+            .setMessage("Are you sure you want to delete this book?")
+            .setPositiveButton("Yes") { _, _ ->
+                deleteBook(bookId)
+            }
+            .setNegativeButton("No") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .create()
+
+        dialog.show()
+    }
+
+    private fun deleteBook(bookId: Int) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val response = booksApiClient.deleteBook(bookId)
+                withContext(Dispatchers.Main) {
+                    if (response.isSuccessful) {
+                        // Book deleted successfully
+                        Log.d("BookActivity", "Book deleted successfully.")
+                    } else {
+                        // Handle error
+                        Log.e("BookActivity", "Delete Book API Error: ${response.errorBody()}")
+                    }
+                }
+            } catch (e: Exception) {
+                // Handle network failure
+                Log.e("BookActivity", "Error: ${e.message}", e)
+            }
+        }
+    }
 }

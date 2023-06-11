@@ -1,5 +1,7 @@
+
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface GoogleBooksApiService {
@@ -13,6 +15,9 @@ interface GoogleBooksApiService {
 interface LocalApiService {
     @GET("display")
     fun getSavedBooks(): Call<LocalApiApiResponse>
+
+    @GET("delete/{bookId}")
+    fun deleteBook(@Path("bookId") bookId: Int): Call<Unit>
 }
 
 data class GoogleBooksApiResponse(

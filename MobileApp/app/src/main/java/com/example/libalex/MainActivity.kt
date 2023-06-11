@@ -1,5 +1,6 @@
 package com.example.libalex
 
+
 import BooksApiClient
 import android.content.Intent
 import android.os.Bundle
@@ -83,7 +84,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun sendPostRequest(bookTitle: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            val url = URL("http://192.168.100.32:8000/api/v1/save?book_name=$bookTitle")
+            val url = URL("http://192.168.1.134:8000/api/v1/save?book_name=$bookTitle")
             val connection = url.openConnection() as HttpURLConnection
             connection.requestMethod = "POST"
 
