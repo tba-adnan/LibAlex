@@ -1,4 +1,5 @@
 package com.example.libalex
+
 import BooksApiClient
 import android.app.AlertDialog
 import android.os.Bundle
@@ -58,12 +59,12 @@ class BookActivity : AppCompatActivity() {
 
     private fun showDeleteConfirmationDialog(bookId: Int) {
         val dialog = AlertDialog.Builder(this)
-            .setTitle("Delete Book")
-            .setMessage("Are you sure you want to delete this book?")
-            .setPositiveButton("Yes") { _, _ ->
+            .setTitle("Supprimer ce livre :")
+            .setMessage("Êtes-vous sûr de vouloir supprimer ce livre?")
+            .setPositiveButton("Oui") { _, _ ->
                 deleteBook(bookId)
             }
-            .setNegativeButton("No") { dialog, _ ->
+            .setNegativeButton("Non") { dialog, _ ->
                 dialog.dismiss()
             }
             .create()
@@ -79,9 +80,10 @@ class BookActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         // Book deleted successfully
                         Log.d("BookActivity", "Book deleted successfully.")
+                        fetchBooks() // Refresh the book list after deletion
                     } else {
                         // Handle error
-                        Log.e("BookActivity", "Delete Book API Error: ${response.errorBody()}")
+                        Log.e("BookActivity", "Delete Book API Error: ${response.errorBody()?.string()}")
                     }
                 }
             } catch (e: Exception) {
@@ -90,4 +92,5 @@ class BookActivity : AppCompatActivity() {
             }
         }
     }
+
 }
