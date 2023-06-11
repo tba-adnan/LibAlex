@@ -63,7 +63,7 @@ export default class Saved extends Component {
       apiKey: OPENAI_API_KEY
     });
     const openai = new OpenAIApi(configuration);
-    const prompt = `give the summary of the book called ${book.book_title} in french`;
+    const prompt = `give the summary of the book called ${book.book_title} in french in less than 50 word`;
 
     try {
       const response = await openai.createCompletion({
@@ -102,7 +102,7 @@ export default class Saved extends Component {
     textField.select();
     document.execCommand('copy');
     textField.remove();
-    cogoToast.success("UUID copied to clipboard!", {
+    cogoToast.success("Token copied to clipboard!", {
       position: 'bottom-right',
       heading: 'Success : '
     });
@@ -116,7 +116,7 @@ export default class Saved extends Component {
         <div>
           <nav className="font-sans flex flex-col text-center sm:flex-row sm:text-left sm:justify-between py-4 px-6 bg-white shadow-md sm:items-baseline w-full">
             <div className="mb-2 sm:mb-0">
-              <p className="text-3xl bold italic pl-6">LibAlex</p>
+              <p className="text-3xl bold italic pl-6">📚 LibAlex</p>
             </div>
             <div className="space-x-4">
               <AwesomeButton type="secondary" href="/">{language === 'en' ? 'Search more 🔎' : 'Chercher plus 🔎'}</AwesomeButton>
@@ -131,25 +131,27 @@ export default class Saved extends Component {
           <div className="flex flex-wrap">
             {this.state.savings.map(book => (
               <div key={book.id} className="w-1/3 p-4">
-                <div className="bg-white rounded-lg shadow-2xl">
-                  <div className="p-6">
-                    <h3 className="text-lg font-serif mb-4">{book.book_title} :</h3>
-                    <div className='flex flex-col space-y-2'>
-                      <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-green-600 bg-green-200  last:mr-0 mr-1">Pages: {book.page_count}</span>
-                      <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-blue-600 bg-blue-200  last:mr-0 mr-1">Language: {book.language}</span>
-                      <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-violet-600 bg-violet-200 last:mr-0 mr-1">Date: {book.release_date}</span>
-                    </div>
+                <div className="rounded-lg relative">
+  <div className="p-6 bg-white rounded-lg shadow-2xl">
+    <h3 className="text-lg font-serif mb-4">{book.book_title}:</h3>
+    <div className="flex flex-col space-y-2">
+      <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-green-600 bg-green-200 last:mr-0 mr-1">Pages: {book.page_count}</span>
+      <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-blue-600 bg-blue-200 last:mr-0 mr-1">Language: {book.language}</span>
+      <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-violet-600 bg-violet-200 last:mr-0 mr-1">Date: {book.release_date}</span>
+    </div>
 
-                    <div className="mt-6 space-x-2">
-                      <AwesomeButton type="secondary" onPress={() => this.getBookSummary(book)}>
-                        {language === 'en' ? 'Book summary in AI 🤖✨' : 'Résumé de livre en IA 🤖✨'}
-                      </AwesomeButton>
-                      <AwesomeButton type="danger" onPress={() => this.delBook(book.id)}>
-                        {language === 'en' ? 'Delete 🗑️' : 'Supprimer 🗑️'}
-                      </AwesomeButton>
-                    </div>
-                  </div>
-                </div>
+    <div className="mt-6 space-x-2">
+      <AwesomeButton type="secondary" onPress={() => this.getBookSummary(book)}>
+        {language === 'en' ? 'Book summary in AI 🤖✨' : 'Résumé de livre en IA 🤖✨'}
+      </AwesomeButton>
+      <AwesomeButton type="danger" onPress={() => this.delBook(book.id)}>
+        {language === 'en' ? 'Delete 🗑️' : 'Supprimer 🗑️'}
+      </AwesomeButton>
+    </div>
+  </div>
+  <div className="absolute inset-0 rounded-lg ring-4 ring-blue-400 opacity-50"></div>
+</div>
+
               </div>
             ))}
           </div>

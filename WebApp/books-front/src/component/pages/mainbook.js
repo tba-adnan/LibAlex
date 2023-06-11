@@ -107,7 +107,8 @@ export default class MainBooks extends React.Component {
     return (
       <div className="">
         <div class="flex justify-center items-center pt-2">
-          <p className="text-4xl italic">LibAlex.</p>
+          {/* <img src="../../images/logo_trs.png"></img> */}
+          <p className="text-4xl italic">📚LibAlex.</p>
         </div>
 
         <div class="min-h-min bg-transparent flex flex-col justify-center">
@@ -126,16 +127,16 @@ export default class MainBooks extends React.Component {
     
     
 
-    <div className="mt-[7px] ml-[25px] flex ">
-  <div class="mr-2">
-    <AwesomeButton onPress={this.toggleCollapse} type="secondary" class="whitespace-nowrap">Recherche avancée ✨</AwesomeButton>
+    <div className="flex mt-[7px] ml-[25px] space-x-2">
+  <div className="pl-[15px]">
+    <AwesomeButton onPress={this.toggleCollapse} type="secondary" className="whitespace-nowrap">Recherche avancée ✨</AwesomeButton>
     <Collapse isOpened={this.state.isOpenadvanced}>
       <br />
       <div>
-        <p class="font-serif shadow-lg">Nombre de résultats :</p>
+        <p className="font-serif shadow-lg">Nombre de résultats :</p>
         <NumberPicker max={40} defaultValue={this.state.resultsNum} onChange={this.handleChangenum} />
-        <p class="font-serif">Filtrer par :</p>
-        <select value={this.state.selectedOption} onChange={this.handleChangeselect} class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
+        <p className="font-serif">Filtrer par :</p>
+        <select value={this.state.selectedOption} onChange={this.handleChangeselect} className="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
           {select_options.map(option => (
             <option key={option.value} value={option.value}>
               {option.label}
@@ -146,10 +147,12 @@ export default class MainBooks extends React.Component {
     </Collapse>
   </div>
 
-  <div className="">
+  <div className="pl-[120px]">
     <AwesomeButton type="secondary" href="/saved">Mes favoris ⭐</AwesomeButton>
   </div>
 </div>
+
+
 </div>
 
 
