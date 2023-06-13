@@ -1,4 +1,3 @@
-
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +5,7 @@ import android.util.Log
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.libalex.BookActivity
 import com.example.libalex.R
@@ -13,6 +13,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.net.HttpURLConnection
+import java.net.URL
 
 class MainActivity : AppCompatActivity() {
     private lateinit var booksListView: ListView
@@ -56,6 +58,38 @@ class MainActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 // Handle network failure
                 Log.e("MainActivity", "Error: ${e.message}", e)
+            }
+        }
+    }
+
+    private fun displayBookToast(bookTitle: String) {
+        runOnUiThread {
+            Toast.makeText(this, "Book Saved: $bookTitle", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun sendPostRequest(bookTitle: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val url = URL("http://192.168.2.40:8000/api/v1/save?book_name=$bookTitle")
+            val connection = url.openConnection() as HttpURLConnection
+            connection.requestMethod = "POST"
+
+            try {
+                val responseCode = connection.responseCode
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    // POST request successful
+                    val response = connection.inputStream.bufferedReader().use { it.readText() }
+                    Log.d("MainActivity", "API Response: $response")
+                } else {
+                    // POST request failed
+                    val errorResponse = connection.errorStream.bufferedReader().use { it.readText() }
+                    Log.e("MainActivity", "API Error: $errorResponse")
+                }
+            } catch (e: Exception) {
+                // Handle network failure or other exceptions
+                Log.e("MainActivity", "Error: ${e.message}", e)
+            } finally {
+                connection.disconnect()
             }
         }
     }
