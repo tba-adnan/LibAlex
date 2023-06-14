@@ -1,4 +1,5 @@
 package com.example.libalex
+
 import BooksApiClient
 import android.app.AlertDialog
 import android.os.Bundle
@@ -80,9 +81,10 @@ class BookActivity : AppCompatActivity() {
                         // Book deleted successfully
                         Log.d("BookActivity", "Book deleted successfully.")
                         fetchBooks() // Refresh the list view
+
                     } else {
                         // Handle error
-                        Log.e("BookActivity", "Delete Book API Error: ${response.errorBody()}")
+                        Log.e("BookActivity", "Delete Book API Error: ${response.errorBody()?.string()}")
                     }
                 }
             } catch (e: Exception) {
