@@ -59,7 +59,7 @@ class BookActivity : AppCompatActivity() {
 
     private fun showDeleteConfirmationDialog(bookId: Int) {
         val dialog = AlertDialog.Builder(this)
-            .setTitle("Supprimer ce livre :")
+            .setTitle("Supprimer le livre")
             .setMessage("Êtes-vous sûr de vouloir supprimer ce livre?")
             .setPositiveButton("Oui") { _, _ ->
                 deleteBook(bookId)
@@ -80,7 +80,8 @@ class BookActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         // Book deleted successfully
                         Log.d("BookActivity", "Book deleted successfully.")
-                        fetchBooks() // Refresh the book list after deletion
+                        fetchBooks() // Refresh the list view
+
                     } else {
                         // Handle error
                         Log.e("BookActivity", "Delete Book API Error: ${response.errorBody()?.string()}")
