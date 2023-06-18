@@ -3,6 +3,7 @@
     package="com.example.libalex">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -36,6 +37,16 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+
+        <activity
+            android:name=".QrActivity"
+            android:label="QR Activity" />
+
+        <activity
+            android:name=".BookListActivity"
+            android:label="Book List Activity"/>
+
 
     </application>
 

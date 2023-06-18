@@ -7,6 +7,8 @@ android {
     namespace 'com.example.libalex'
     compileSdk 33
 
+
+
     defaultConfig {
         applicationId "com.example.libalex"
         minSdk 24
@@ -80,6 +82,21 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1'
+
+
+
+
+
+    implementation 'com.journeyapps:zxing-android-embedded:4.2.0'
+
+
+
+
+
+
+
+
+
 
 
 }

@@ -1,12 +1,15 @@
 package com.example.libalex
+
 import BooksApiClient
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,7 +26,15 @@ class BookActivity : AppCompatActivity() {
 
         booksListView = findViewById(R.id.booksListView)
 
+        // Fetch and display books
         fetchBooks()
+
+        // Set click listener for floating button
+        val fabQRCode: FloatingActionButton = findViewById(R.id.fabQRCode)
+        fabQRCode.setOnClickListener {
+            val intent = Intent(this, QrActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun fetchBooks() {
@@ -91,5 +102,4 @@ class BookActivity : AppCompatActivity() {
             }
         }
     }
-
 }
