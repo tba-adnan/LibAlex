@@ -24,7 +24,7 @@ class BooksApiClient {
         googleApiService = retrofit.create(GoogleBooksApiService::class.java)
 
         val localRetrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.100.32:8000/api/v1/")
+            .baseUrl("http://192.168.1.134:8000/api/v1/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
 
