@@ -23,9 +23,14 @@ return $request->user();});
 Route::post('v1/register', [MainController::class,'register']);
 Route::post('v1/login', [MainController::class,'login']);
 
-
 // Books API endpoint.
 Route::post('v1/save', [SaveBookController::class,'Savebook']);
 Route::get('v1/display', [SaveBookController::class,'Display_Saved']);
 Route::get('v1/delete/{id}', [SaveBookController::class,'Delete_Book']);
+
+//UUID endpoint. (Books assoc with Tokens.)
+Route::get('v1/similar/{uuid}', [SaveBookController::class, 'getSimilarBooks']);
+
+
+
 
