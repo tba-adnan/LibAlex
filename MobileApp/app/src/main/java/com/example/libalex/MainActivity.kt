@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun sendPostRequest(bookTitle: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            val url = URL("http://192.168.1.134:8000/api/v1/save?book_name=$bookTitle")
+            val url = URL("http://8f55-41-142-111-6.ngrok-free.app/api/v1/save?book_name=$bookTitle")
             val connection = url.openConnection() as HttpURLConnection
             connection.requestMethod = "POST"
 

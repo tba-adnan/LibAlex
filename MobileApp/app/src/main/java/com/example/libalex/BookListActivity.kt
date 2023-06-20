@@ -7,6 +7,7 @@ import android.content.Intent
 import android.net.Uri
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import android.widget.Toast
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -35,6 +36,12 @@ class BookListActivity : AppCompatActivity() {
             val searchUrl = "https://www.google.com/search?tbm=bks&q=$searchQuery"
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(searchUrl))
             startActivity(intent)
+        }
+
+        booksListView.setOnItemLongClickListener { _, _, position, _ ->
+            val bookName = books[position].book_title
+            displayToast("I ❤ cupcake \uD83E\uDDC1")
+            true
         }
     }
 
@@ -74,6 +81,11 @@ class BookListActivity : AppCompatActivity() {
         }
         return books
     }
+
+    private fun displayToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
 }
+
 
 

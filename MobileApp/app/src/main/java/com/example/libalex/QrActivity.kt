@@ -51,10 +51,12 @@ class QrActivity : AppCompatActivity(), DecoratedBarcodeView.TorchListener {
     private lateinit var bookAdapter: ArrayAdapter<String>
     private val retrofit: Retrofit
     private val localApiService: LocalApiService
+    private var bookListActivityStarted = false // Flag to track if BookListActivity is already started
+    private var toastDisplayed = false // Flag to track if the toast has been displayed
 
     init {
         retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.1.134:8000/api/v1/")
+            .baseUrl("http://8f55-41-142-111-6.ngrok-free.app/api/v1/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -82,7 +84,10 @@ class QrActivity : AppCompatActivity(), DecoratedBarcodeView.TorchListener {
                     if (it.barcodeFormat == BarcodeFormat.QR_CODE) {
                         val uuid = it.text
                         retrieveBooksByUuid(uuid) { responseData ->
-                            Toast.makeText(this@QrActivity, "UUID: $uuid", Toast.LENGTH_SHORT).show()
+                            if (!toastDisplayed) {
+                                Toast.makeText(this@QrActivity, "QR valide ✔: $uuid", Toast.LENGTH_SHORT).show()
+                                toastDisplayed = true
+                            }
                             navigateToBookListActivity(uuid, responseData)
                         }
                     }
@@ -191,13 +196,20 @@ class QrActivity : AppCompatActivity(), DecoratedBarcodeView.TorchListener {
     }
 
     private fun navigateToBookListActivity(uuid: String, responseData: String) {
-        val intent = Intent(this, BookListActivity::class.java)
-        intent.putExtra("uuid", uuid)
-        intent.putExtra("responseData", responseData)
-        startActivity(intent)
+        if (!bookListActivityStarted) {
+            // Create and start BookListActivity only if it's not already started
+            bookListActivityStarted = true
+
+            val intent = Intent(this, BookListActivity::class.java)
+            intent.putExtra("uuid", uuid)
+            intent.putExtra("responseData", responseData)
+            startActivity(intent)
+        }
     }
 
     companion object {
         private const val CAMERA_PERMISSION_REQUEST_CODE = 123
     }
 }
+
+

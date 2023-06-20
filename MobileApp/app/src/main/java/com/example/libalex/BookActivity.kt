@@ -8,6 +8,7 @@ import android.util.Log
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.CoroutineScope
@@ -26,10 +27,8 @@ class BookActivity : AppCompatActivity() {
 
         booksListView = findViewById(R.id.booksListView)
 
-        // Fetch and display books
         fetchBooks()
 
-        // Set click listener for floating button
         val fabQRCode: FloatingActionButton = findViewById(R.id.fabQRCode)
         fabQRCode.setOnClickListener {
             val intent = Intent(this, QrActivity::class.java)
@@ -53,34 +52,79 @@ class BookActivity : AppCompatActivity() {
 
                         booksListView.onItemClickListener =
                             AdapterView.OnItemClickListener { _, _, position, _ ->
-                                val bookId = response[position].id
+                                val book = response[position]
+                                val bookId = book.id
+                                val bookTitle = book.book_title
                                 showDeleteConfirmationDialog(bookId)
+
+
+                                CoroutineScope(Dispatchers.IO).launch {
+                                    try {
+                                        val summary = booksApiClient.getBookSummary(bookTitle)
+                                        Log.d("BookActivity", "Book Summary: $summary")
+                                        // TODO: Do something with the book summary
+                                    } catch (e: Exception) {
+                                        // Handle error
+                                        Log.e("BookActivity", "Error getting book summary: ${e.message}", e)
+                                    }
+                                }
                             }
                     } else {
-                        // Handle empty response
+                        // Handling empty response (Just in case)
                     }
                 }
             } catch (e: Exception) {
-                // Handle network failure
+                // Handle network Error
                 Log.e("BookActivity", "Error: ${e.message}", e)
             }
         }
     }
 
     private fun showDeleteConfirmationDialog(bookId: Int) {
-        val dialog = AlertDialog.Builder(this)
-            .setTitle("Supprimer le livre")
-            .setMessage("Êtes-vous sûr de vouloir supprimer ce livre?")
-            .setPositiveButton("Oui") { _, _ ->
-                deleteBook(bookId)
-            }
-            .setNegativeButton("Non") { dialog, _ ->
-                dialog.dismiss()
-            }
-            .create()
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val response = booksApiClient.getSavedBooks()
+                withContext(Dispatchers.Main) {
+                    if (response.isNotEmpty()) {
+                        val book = response.find { it.id == bookId }
+                        if (book != null) {
+                            val bookTitle = book.book_title
 
-        dialog.show()
+                            // Retrieve the book summary in the background
+                            val summary = withContext(Dispatchers.IO) {
+                                booksApiClient.getBookSummary(bookTitle)
+                            }
+
+                            val dialog = AlertDialog.Builder(this@BookActivity)
+                                .setTitle(" \uD83E\uDD16 Supprimer le livre : ")
+                                .setMessage("Êtes-vous sûr de vouloir supprimer ce livre?")
+                                .setPositiveButton("Oui") { _, _ ->
+                                    deleteBook(bookId)
+                                }
+                                .setNegativeButton("Non") { dialog, _ ->
+                                    dialog.dismiss()
+                                }
+                                .create()
+
+                            // Set the retrieved summary as the message text in the dialog
+                            dialog.setOnShowListener {
+                                dialog.findViewById<TextView>(android.R.id.message)?.text = summary
+                            }
+
+                            dialog.show()
+                        }
+                    } else {
+                        // Handling empty response (Just in case)
+                    }
+                }
+            } catch (e: Exception) {
+                // Handle network Error
+                Log.e("BookActivity", "Error: ${e.message}", e)
+            }
+        }
     }
+
+
 
     private fun deleteBook(bookId: Int) {
         CoroutineScope(Dispatchers.IO).launch {
@@ -88,7 +132,7 @@ class BookActivity : AppCompatActivity() {
                 val response = booksApiClient.deleteBook(bookId)
                 withContext(Dispatchers.Main) {
                     if (response.isSuccessful) {
-                        // Book deleted successfully
+                        // Book deleted
                         Log.d("BookActivity", "Book deleted successfully.")
                         fetchBooks() // Refresh the list view
                     } else {

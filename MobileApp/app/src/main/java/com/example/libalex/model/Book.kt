@@ -9,13 +9,13 @@ data class VolumeInfo(
 
 data class LocalBook(
     val id: Int,
-    val book_title: String, // Update to match the field name in the API response
+    val book_title: String,
     val author: String?,
-    val page_count: Int?, // Update to match the field name in the API response
+    val page_count: Int?,
     val language: String?,
-    val release_date: String?, // Update to match the field name in the API response
+    val release_date: String?,
     val uuid: String?,
-    val created_at: String?, // Update to match the field name in the API response
-    val updated_at: String? // Update to match the field name in the API response
+    val created_at: String?,
+    val updated_at: String?
 )
 
