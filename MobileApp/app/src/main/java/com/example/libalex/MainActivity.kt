@@ -66,11 +66,11 @@ class MainActivity : AppCompatActivity() {
                             sendPostRequest(bookTitle)
                         }
                     } else {
-                        // Handle empty response
+
                     }
                 }
             } catch (e: Exception) {
-                // Handle network failure
+
                 Log.e("MainActivity", "Error: ${e.message}", e)
             }
         }
@@ -84,23 +84,20 @@ class MainActivity : AppCompatActivity() {
 
     private fun sendPostRequest(bookTitle: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            val url = URL("http://8f55-41-142-111-6.ngrok-free.app/api/v1/save?book_name=$bookTitle")
+            val url = URL("http://16f0-102-101-186-190.ngrok-free.app/api/v1/save?book_name=$bookTitle")
             val connection = url.openConnection() as HttpURLConnection
             connection.requestMethod = "POST"
 
             try {
                 val responseCode = connection.responseCode
                 if (responseCode == HttpURLConnection.HTTP_OK) {
-                    // POST request successful
                     val response = connection.inputStream.bufferedReader().use { it.readText() }
                     Log.d("MainActivity", "API Response: $response")
                 } else {
-                    // POST request failed
                     val errorResponse = connection.errorStream.bufferedReader().use { it.readText() }
                     Log.e("MainActivity", "API Error: $errorResponse")
                 }
             } catch (e: Exception) {
-                // Handle network failure or other exceptions
                 Log.e("MainActivity", "Error: ${e.message}", e)
             } finally {
                 connection.disconnect()

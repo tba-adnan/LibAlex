@@ -56,7 +56,7 @@ class QrActivity : AppCompatActivity(), DecoratedBarcodeView.TorchListener {
 
     init {
         retrofit = Retrofit.Builder()
-            .baseUrl("http://8f55-41-142-111-6.ngrok-free.app/api/v1/")
+            .baseUrl("http://16f0-102-101-186-190.ngrok-free.app/api/v1/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -176,11 +176,9 @@ class QrActivity : AppCompatActivity(), DecoratedBarcodeView.TorchListener {
                     books.add(book)
                 }
             } else {
-                // Handle unsuccessful response
                 Log.e("QrActivity", "Unsuccessful response: $response")
             }
         } catch (e: Exception) {
-            // Handle parsing exception
             Log.e("QrActivity", "Error parsing response: ${e.message}", e)
         }
         return books
@@ -197,7 +195,6 @@ class QrActivity : AppCompatActivity(), DecoratedBarcodeView.TorchListener {
 
     private fun navigateToBookListActivity(uuid: String, responseData: String) {
         if (!bookListActivityStarted) {
-            // Create and start BookListActivity only if it's not already started
             bookListActivityStarted = true
 
             val intent = Intent(this, BookListActivity::class.java)

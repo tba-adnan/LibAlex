@@ -15,6 +15,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import android.widget.Toast
+
 
 class BookActivity : AppCompatActivity() {
     private lateinit var booksListView: ListView
@@ -62,7 +64,6 @@ class BookActivity : AppCompatActivity() {
                                     try {
                                         val summary = booksApiClient.getBookSummary(bookTitle)
                                         Log.d("BookActivity", "Book Summary: $summary")
-                                        // TODO: Do something with the book summary
                                     } catch (e: Exception) {
                                         // Handle error
                                         Log.e("BookActivity", "Error getting book summary: ${e.message}", e)
@@ -74,7 +75,7 @@ class BookActivity : AppCompatActivity() {
                     }
                 }
             } catch (e: Exception) {
-                // Handle network Error
+
                 Log.e("BookActivity", "Error: ${e.message}", e)
             }
         }
@@ -106,7 +107,6 @@ class BookActivity : AppCompatActivity() {
                                 }
                                 .create()
 
-                            // Set the retrieved summary as the message text in the dialog
                             dialog.setOnShowListener {
                                 dialog.findViewById<TextView>(android.R.id.message)?.text = summary
                             }
@@ -118,7 +118,7 @@ class BookActivity : AppCompatActivity() {
                     }
                 }
             } catch (e: Exception) {
-                // Handle network Error
+                // Error (to log)
                 Log.e("BookActivity", "Error: ${e.message}", e)
             }
         }
@@ -132,16 +132,13 @@ class BookActivity : AppCompatActivity() {
                 val response = booksApiClient.deleteBook(bookId)
                 withContext(Dispatchers.Main) {
                     if (response.isSuccessful) {
-                        // Book deleted
                         Log.d("BookActivity", "Book deleted successfully.")
                         fetchBooks() // Refresh the list view
                     } else {
-                        // Handle error
                         Log.e("BookActivity", "Delete Book API Error: ${response.errorBody()}")
                     }
                 }
             } catch (e: Exception) {
-                // Handle network failure
                 Log.e("BookActivity", "Error: ${e.message}", e)
             }
         }

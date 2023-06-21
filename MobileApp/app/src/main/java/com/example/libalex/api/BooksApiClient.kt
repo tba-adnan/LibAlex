@@ -31,7 +31,7 @@ class BooksApiClient {
         googleApiService = retrofit.create(GoogleBooksApiService::class.java)
 
         val localRetrofit = Retrofit.Builder()
-            .baseUrl("http://8f55-41-142-111-6.ngrok-free.app/api/v1/")
+            .baseUrl("http://16f0-102-101-186-190.ngrok-free.app/api/v1/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
 
@@ -76,7 +76,7 @@ class BooksApiClient {
             put("messages", JSONArray().apply {
                 put(JSONObject().apply {
                     put("role", "user")
-                    put("content", "Summarize the book in 100 word or less and in french: $bookTitle")
+                    put("content", "Summarize the book in 50 word or less and in french: $bookTitle")
                 })
             })
             put("temperature", 0.7)
@@ -112,6 +112,6 @@ class BooksApiClient {
             val message = choices.getJSONObject(0).getJSONObject("message")
             return message.getString("content")
         }
-        return ""  // Return empty summary if no content found
+        return ""
     }
 }
